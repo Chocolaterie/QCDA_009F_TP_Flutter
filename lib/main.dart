@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tp_flutter_qcda_009f/card.dart';
 import 'package:tp_flutter_qcda_009f/footer.dart';
 import 'package:tp_flutter_qcda_009f/header.dart';
 
@@ -35,7 +36,10 @@ class MyHomePage extends StatelessWidget {
         body: Column(
           children: [
             HeaderWidget(),
-            Expanded(child: Text("TODO")),
+            Expanded(
+                child: Column(
+              children: [MessageCard()],
+            )),
             FooterWidget()
           ],
         ));
