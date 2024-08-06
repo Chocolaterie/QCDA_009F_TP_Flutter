@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tp_flutter_qcda_009f/footer.dart';
 import 'package:tp_flutter_qcda_009f/header.dart';
 
 void main() {
@@ -33,7 +34,9 @@ class MyHomePage extends StatelessWidget {
         ),
         body: Column(
           children: [
-            HeaderWidget()
+            HeaderWidget(),
+            Expanded(child: Text("TODO")),
+            FooterWidget()
           ],
         ));
   }
