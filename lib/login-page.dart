@@ -8,12 +8,20 @@ class LoginPage extends StatelessWidget {
     return Padding(padding: EdgeInsets.symmetric(vertical: 10), child: widget);
   }
 
+  /// Lors du clique du bouton de connexion
+  /// ATTENTION : On part du principe qu'on l'as mis dans le onPressed
+  void onSubmit(BuildContext context) {
+    // Changer de page
+    Navigator.pushNamed(context, "/messages");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text("Le Titre de ma page"),
+          title: Text("Connexion"),
         ),
         body: Stack(
           fit: StackFit.expand,
@@ -54,7 +62,7 @@ class LoginPage extends StatelessWidget {
                   wrapFormPadding(SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          onPressed: () {}, child: Padding(
+                          onPressed: () { onSubmit(context); }, child: Padding(
                             padding: const EdgeInsets.all(15),
                             child: Text("Connexion"),
                           ))))
