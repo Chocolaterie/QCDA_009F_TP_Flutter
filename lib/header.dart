@@ -9,6 +9,10 @@ const headerTextStyle = TextStyle(color: Colors.white);
 
 class HeaderWidget extends StatelessWidget {
 
+  Widget makeIconButton(String imgPath){
+    return IconButton(onPressed: () {}, icon: Image.asset(imgPath, width: 26,));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,9 +22,9 @@ class HeaderWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text("Nouveau", style: headerTextStyle,),
+            makeIconButton("pencil.png"),
             Text("Accueil", style: headerTextStyle,),
-            Text("Rechercher", style: headerTextStyle,),
+            makeIconButton("search.png"),
           ],
         ),
       ),

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 class MessageCard extends StatelessWidget {
 
+  Widget makeIconButton(String imgPath){
+    return IconButton(onPressed: () {}, icon: Image.asset(imgPath, width: 22,));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,9 +42,9 @@ class MessageCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                Text("Répondre"),
-                Text("Retweet"),
-                Text("Favoris"),
+                  makeIconButton("reply.png"),
+                  makeIconButton("retweet.png"),
+                  makeIconButton("favorite.png"),
               ],),
             )
           ],),
