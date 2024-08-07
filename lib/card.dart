@@ -18,7 +18,13 @@ class MessageCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                    Text("crevette-nutella@gmail.com"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("crevette-nutella@gmail.com", style: TextStyle(fontWeight: FontWeight.bold),),
+                        Text("56s", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),),
+                      ],
+                    ),
                     Text(
                       overflow: TextOverflow.ellipsis,
                         maxLines: 3,
