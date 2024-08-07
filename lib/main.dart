@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tp_flutter_qcda_009f/card.dart';
 import 'package:tp_flutter_qcda_009f/footer.dart';
 import 'package:tp_flutter_qcda_009f/header.dart';
+import 'package:tp_flutter_qcda_009f/login-page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: LoginPage(),
     );
   }
 }
