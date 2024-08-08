@@ -6,7 +6,7 @@ import 'package:tp_flutter_qcda_009f/tweet.dart';
 
 class MyHomePage extends StatelessWidget {
 
-  /// Ma liste de tweet e ndata
+  /// Ma liste de tweet en data
   List<Tweet> tweets = [
     Tweet("danette@gmail.com", "J'aime les yaourt et wouafsusu !"),
     Tweet("merguez@gmail.com", "J'aime bien manger"),
