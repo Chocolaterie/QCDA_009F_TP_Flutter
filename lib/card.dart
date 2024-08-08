@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tp_flutter_qcda_009f/tweet.dart';
 
 class MessageCard extends StatelessWidget {
+
+  Tweet tweet;
+
+  MessageCard(this.tweet);
 
   Widget makeIconButton(String imgPath){
     return IconButton(onPressed: () {}, icon: Image.asset(imgPath, width: 22,));
@@ -25,14 +30,14 @@ class MessageCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("crevette-nutella@gmail.com", style: TextStyle(fontWeight: FontWeight.bold),),
+                        Text(tweet.author, style: TextStyle(fontWeight: FontWeight.bold),),
                         Text("56s", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),),
                       ],
                     ),
                     Text(
                       overflow: TextOverflow.ellipsis,
                         maxLines: 3,
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat")
+                        tweet.message)
                   ],),
                 ),
               )
