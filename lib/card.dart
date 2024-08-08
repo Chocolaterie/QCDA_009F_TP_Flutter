@@ -14,7 +14,7 @@ class MessageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -43,7 +43,7 @@ class MessageCard extends StatelessWidget {
               )
             ],),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
