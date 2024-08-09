@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tp_flutter_qcda_009f/tweet.dart';
+import 'package:tp_flutter_qcda_009f/home/tweet.dart';
 
 class MessageCard extends StatelessWidget {
 

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sn_progress_dialog/sn_progress_dialog.dart';
-import 'package:tp_flutter_qcda_009f/home/card.dart';
-import 'package:tp_flutter_qcda_009f/home/footer.dart';
-import 'package:tp_flutter_qcda_009f/home/header.dart';
+import 'package:tp_flutter_qcda_009f/home/component/card.dart';
+import 'package:tp_flutter_qcda_009f/home/component/footer.dart';
+import 'package:tp_flutter_qcda_009f/home/component/header.dart';
 import 'package:tp_flutter_qcda_009f/home/message-view-model.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -25,7 +24,7 @@ class MyHomePage extends StatelessWidget {
               appBar: AppBar(
                 centerTitle: true,
                 backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-                title: Text("Home Page"),
+                title: const Text("Home Page"),
               ),
               body: Column(
                 children: [
@@ -41,8 +40,8 @@ class MyHomePage extends StatelessWidget {
                                 onPressed: () {
                                   onClickCallApi(context);
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(15),
                                   child: Text("Rafraichir"),
                                 ))),
                         Expanded(

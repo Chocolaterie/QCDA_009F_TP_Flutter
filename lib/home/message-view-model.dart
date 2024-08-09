@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 import 'package:sn_progress_dialog/sn_progress_dialog.dart';
-import 'package:tp_flutter_qcda_009f/tweet.dart';
+import 'package:tp_flutter_qcda_009f/home/tweet.dart';
 
 class MessageViewModel with ChangeNotifier {
 

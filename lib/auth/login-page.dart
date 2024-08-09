@@ -1,11 +1,10 @@
-import 'package:email_validator/email_validator.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:tp_flutter_qcda_009f/app-theme.dart';
-import 'package:tp_flutter_qcda_009f/app-validator.dart';
 import 'dart:convert' as convert;
+
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:tp_flutter_qcda_009f/auth-context.dart';
+import 'package:tp_flutter_qcda_009f/auth/auth-context.dart';
+import 'package:tp_flutter_qcda_009f/shared/app-theme.dart';
+import 'package:tp_flutter_qcda_009f/shared/app-validator.dart';
 
 class LoginPage extends StatelessWidget {
   // Pour récuperer l'email et le password saisies
@@ -17,7 +16,7 @@ class LoginPage extends StatelessWidget {
   /// Utilitaire permettant d'encaspuler
   /// uniformement des Widget dans un padding vertical de 10
   Widget wrapFormPadding(Widget widget) {
-    return Padding(padding: EdgeInsets.symmetric(vertical: 10), child: widget);
+    return Padding(padding: const EdgeInsets.symmetric(vertical: 10), child: widget);
   }
 
   /// Lors du clique du bouton de connexion
@@ -52,7 +51,7 @@ class LoginPage extends StatelessWidget {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                  title: Text('Erreur'),
+                  title: const Text('Erreur'),
                   content: Text(responseBodyJson['message']));
             });
       }
@@ -81,8 +80,8 @@ class LoginPage extends StatelessWidget {
                       "sign_in_icon.png",
                       width: 126,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(30),
+                    const Padding(
+                      padding: EdgeInsets.all(30),
                       child: Text(
                         "Connexion",
                         style:
@@ -103,7 +102,7 @@ class LoginPage extends StatelessWidget {
                     wrapFormPadding(Row(
                       children: [
                         Switch(value: false, onChanged: (value) {}),
-                        Text(
+                        const Text(
                           "Mémoriser mes informations",
                           style: TextStyle(color: Color(0xFFFFFEFB)),
                         )
@@ -115,8 +114,8 @@ class LoginPage extends StatelessWidget {
                             onPressed: () {
                               onSubmit(context);
                             },
-                            child: Padding(
-                              padding: const EdgeInsets.all(15),
+                            child: const Padding(
+                              padding: EdgeInsets.all(15),
                               child: Text("Connexion"),
                             ))))
                   ],
