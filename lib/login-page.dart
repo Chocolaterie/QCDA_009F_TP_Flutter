@@ -3,8 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tp_flutter_qcda_009f/app-theme.dart';
 import 'package:tp_flutter_qcda_009f/app-validator.dart';
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
+import 'package:tp_flutter_qcda_009f/auth-context.dart';
 
 class LoginPage extends StatelessWidget {
+  // Pour récuperer l'email et le password saisies
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -16,14 +22,41 @@ class LoginPage extends StatelessWidget {
 
   /// Lors du clique du bouton de connexion
   /// ATTENTION : On part du principe qu'on l'as mis dans le onPressed
-  void onSubmit(BuildContext context) {
+  void onSubmit(BuildContext context) async {
     // Formulaire valide (contrôle de surface)
-    if (formKey.currentState!.validate()){
-      // TODO (Appel web service pour le contrôle métier)
-      // Changer de page
-      Navigator.pushNamed(context, "/messages");
-    }
+    if (formKey.currentState!.validate()) {
+      // Le header application/json
+      final headers = {'Content-Type': 'application/json'};
+      // Preparer la requête (email / password)
+      final bodyRequest = convert.jsonEncode(
+          {'email': emailController.text, 'password': passwordController.text});
 
+      // Appeler l'api
+      var response = await http.post(Uri.parse("http://localhost:3000/auth"),
+          headers: headers, body: bodyRequest);
+
+      // Récupérer la rep http en json
+      var responseBodyJson = convert.jsonDecode(response.body);
+
+      // Tester si code ok
+      if (responseBodyJson['code'] == "203") {
+        // Stocker le token
+        AuthContext.token = responseBodyJson['data'];
+        // Changer de page
+        Navigator.pushNamed(context, "/messages");
+      }
+      // Sinon erreur
+      else {
+        // Afficher la popup d'information
+        showDialog<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                  title: Text('Erreur'),
+                  content: Text(responseBodyJson['message']));
+            });
+      }
+    }
   }
 
   @override
@@ -52,15 +85,18 @@ class LoginPage extends StatelessWidget {
                       padding: const EdgeInsets.all(30),
                       child: Text(
                         "Connexion",
-                        style: TextStyle(fontSize: 26, color: Color(0xDDFFFFFF)),
+                        style:
+                            TextStyle(fontSize: 26, color: Color(0xDDFFFFFF)),
                       ),
                     ),
                     wrapFormPadding(TextFormField(
+                      controller: emailController,
                       validator: AppValidator.emailValidator,
                       style: AppTheme.inputTextColor,
                       decoration: AppTheme.formDecoration("Email"),
                     )),
                     wrapFormPadding(TextFormField(
+                      controller: passwordController,
                       style: AppTheme.inputTextColor,
                       decoration: AppTheme.formDecoration("Password"),
                     )),
@@ -76,7 +112,10 @@ class LoginPage extends StatelessWidget {
                     wrapFormPadding(SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                            onPressed: () { onSubmit(context); }, child: Padding(
+                            onPressed: () {
+                              onSubmit(context);
+                            },
+                            child: Padding(
                               padding: const EdgeInsets.all(15),
                               child: Text("Connexion"),
                             ))))
